@@ -71,9 +71,3 @@ deploy:
   type: git
   repository: git@github.com:marinzheng/marinzheng.github.io.git
   branch: master
-
-backup:
-    type: git
-    theme: maupassant
-    repository:
-       github: git@github.com:marinzheng/marinzheng.github.io.git,backup

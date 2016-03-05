@@ -99,33 +99,29 @@ node有一套自己的包管理工具，叫npm（装node的时候已自动装好
 
 - ***将本地博客的源文件备份到github库***
 
-github备份源文件非常重要。一是源文件丢了，生成的静态页面不好往回“反编译”，费时；二是程序员，单位三台电脑，家里两台电脑，抓起哪个来用哪个，用U盘来回来去倒，费事。hexo并没有提供备份源文件的命令，之前一直为这个事儿苦恼，也试过用百度云盘什么的同步，但终究太low。好在人间自有大神在：[https://github.com/coneycode/hexo-git-backup](https://github.com/coneycode/hexo-git-backup "hexo-git-backup")。这插件太好了，自从用了这个插件之后，腿也不疼了，腰也不喘了。。。
+github备份源文件非常重要。一是源文件丢了，生成的静态页面不好往回“反编译”，费时；二是程序员，单位三台电脑，家里两台电脑，抓起哪个来用哪个，用U盘来回来去倒，费事。hexo并没有提供备份源文件的命令，之前一直为这个事儿苦恼，也试过用百度云盘什么的同步，但终究太low。最后的解决方案是：在github博客项目里建一个`backup`分支，用于存放**必要**的博客源文件。
 
-具体安装配置如下：
+具体配置如下：
 
-安装：在本地`xxx.github.io`目录下：
+github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。如果事先没有建好的话，也可以此时创建，只是要比事先建好多一个步骤：清空分支代码。
 
-```
-	$ npm install hexo-git-backup --save  #-- 通过npm命令安装hexo的备份模块
-```
+用TortoiseGit或命令行下载仓库：`https://github.com/xxx/xxx.github.io.git`，并切换到`backup`分支（因为本地已经生成了一个`xxx.github.io`文件夹，此时执行这个命令又会生成一个同样名称的文件夹，会冲突，所以可以在另外的目录执行这个命令，或者将本地的文件夹改个名称，比如：`xxx.github.io.local`）。然后将本地文件夹中的**必要**文件拷贝到下载下来的文件夹里，包括：`scaffolds`、`source`、`themes`、`_config.yml`、`.gitignore`、`package.json`。是的，只有这几个文件是必要的，其它的都是生成的，没有必要备份。
 
-配置：在`_config.yml`文件最后添加：
+如果没有`.gitignore`文件，就新建一个。内容如下：
 
 ```
-	backup:
-    	type: git
-		theme: maupassant
-    	repository:
-       		github: git@github.com:xxx/xxx.github.io.git,backup
-```
-
-`xxx.github.io.git`库的`backup`分支之前已经建好，详见前文。如果事先没有建好的话，也可以此时创建，只是要比事先建好多一个步骤：清空分支代码。
-
-操作：在本地`xxx.github.io`目录下：
+    .DS_Store
+    Thumbs.db
+	db.json
+	*.log
+	node_modules/
+	public/
+	.deploy*/
 
 ```
-	$ hexo b  #-- 通过hexo命令将本地博客的源文件备份到github库
-```
+
+然后提交就可以了。
+
 
 ----------
 
@@ -138,10 +134,8 @@ github备份源文件非常重要。一是源文件丢了，生成的静态页�
 ```
 	$ npm install hexo-cli -g         	     #-- 安装hexo（只需运行一次）
 	$ npm install hexo-deployer-git --save   #-- 安装hexo的git模块（只需运行一次）
-	$ npm install hexo-git-backup --save     #-- 安装hexo的备份模块（只需运行一次）
 	$ npm install hexo-renderer-jade --save  #-- 安装主题插件（只需运行一次）
 	$ npm install hexo-renderer-sass --save  #-- 安装主题插件（只需运行一次）
-	$ npm install hexo-git-backup --save     #-- 安装hexo的备份模块（只需运行一次）
 	$ npm install                            #-- 安装其它依赖（只需运行一次）
 ```
 
@@ -152,7 +146,8 @@ github备份源文件非常重要。一是源文件丢了，生成的静态页�
 	$ hexo g            #-- 将编辑的源文件转化成博客文件
 	$ hexo s -p5000     #-- 启动本地博客服务器，监听5000端口
 	$ hexo d            #-- 发布本地博客到github远程博客
-	$ hexo b            #-- 备份源文件到github远程仓库
+	$ git commit        #-- git本地提交（可用TortoiseGit执行）
+	$ git push          #-- git推送备份（可用TortoiseGit执行）
 ```
 
 ----------
