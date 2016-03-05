@@ -6,7 +6,7 @@ baidu_search: ## Use Baidu search, true/false.
 swiftype: d5QmMaMtSh-sCQs4te5g ## Your swiftype_key, e.g. m7b11ZrsT8Me7gzApciT
 tinysou: ## Your tinysou_key, e.g. 4ac092ad8d749fdc6293
 google_analytics: ## Your Google Analytics tracking id, e.g. UA-42425684-2
-baidu_analytics: ## Your Baidu Analytics tracking id, e.g. 8006843039519956000
+baidu_analytics: 94a1776ec1fe8abd4ab5cdb45e481627 ## Your Baidu Analytics tracking id, e.g. 8006843039519956000
 shareto: true ## If you want to use the share button please set the value to true.
 busuanzi: true # If you want to use Busuanzi page views please set the value to true.
 
