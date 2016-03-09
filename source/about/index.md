@@ -6,11 +6,7 @@
 
 非著名java scala game-server&bi从业人员
 
-
-----------
-
-
-<a href="mailto:marizheng@qq.com">联系邮箱</a>
+<div style='height:2px;width:100%;background:#F1F1F1;overflow:hidden;' ></div>
+<a href="mailto:marizheng@qq.com" style='color:blue;'>联系邮箱</a>
 
 </center>
-
