@@ -168,7 +168,7 @@ github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。
 这样，就可以在新电脑上写博客了。日常操作如下：
 
 ```
-	$ hexo n "文章标题"  #-- 新建文章。文件建在xxx.github.io/source目录下，想编辑或修改，在这里找
+	$ hexo n '文章标题'  #-- 新建文章。文件建在xxx.github.io/source目录下，想编辑或修改，在这里找
 	$ hexo g            #-- 将编辑的源文件转化成博客文件
 	$ hexo s -p5000     #-- 启动本地博客服务器，监听5000端口
 	$ hexo d            #-- 发布本地博客到github远程博客
