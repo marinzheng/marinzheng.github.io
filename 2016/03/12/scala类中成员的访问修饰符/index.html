@@ -52,7 +52,7 @@
 <li><em>带变量修饰符（val/var a: Int（带变量修饰符，一定带访问修饰符，因为public默认）、private val/var a: Int …）：</em>  和属性一样，生成私有字段，公有或私有getter setter方法。</li>
 <li><em>不带变量修改符（类似方法参数的写法：a: Int, b: String ）：</em> 如果有其它方法（不包括构造方法。scala中直接写在类里，和属性方法并列的语句，会编译到构造方法里）使用了类参数字段，则生成私有字段；如果没有被使用，则连字段都不生成，getter setter方法更没有了。因为这种情况肯定不会生成getter setter方法。所以<strong>要想在其它类里访问不带访问修改符的类参数，得在被访问的类里另外定义属性=类参数或写getter setter方法</strong>。</li>
 </ul>
-</div><a data-url="http://marinzheng.github.io/2016/03/12/scala类中成员的访问修饰符/" data-id="ciluggr3u0002xkt4p7sc5001" class="article-share-link">分享到</a><div class="tags"><a href="/tags/scala/">scala</a></div><div class="post-nav"><a href="/2016/03/12/京剧音韵与英语音标/" class="pre">京剧音韵与英语音标</a><a href="/2016/03/04/hexo博客创建和日常操作记要/" class="next">hexo博客创建和日常操作记要</a></div><div id="disqus_thread"><script>var disqus_shortname = 'marinzheng';
+</div><a data-url="http://marinzheng.github.io/2016/03/12/scala类中成员的访问修饰符/" data-id="cilup80370001tgt4gnk33rrw" class="article-share-link">分享到</a><div class="tags"><a href="/tags/scala/">scala</a></div><div class="post-nav"><a href="/2016/03/12/京剧音韵与英语音标/" class="pre">京剧音韵与英语音标</a><a href="/2016/03/04/hexo博客创建和日常操作记要/" class="next">hexo博客创建和日常操作记要</a></div><div id="disqus_thread"><script>var disqus_shortname = 'marinzheng';
 var disqus_identifier = '2016/03/12/scala类中成员的访问修饰符/';
 var disqus_title = 'scala类中成员的访问修饰符';
 var disqus_url = 'http://marinzheng.github.io/2016/03/12/scala类中成员的访问修饰符/';
