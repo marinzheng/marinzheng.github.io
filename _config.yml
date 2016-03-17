@@ -69,5 +69,6 @@ theme: maupassant
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:marinzheng/marinzheng.github.io.git
-  branch: master
+  repo: 
+    github: git@github.com:marinzheng/marinzheng.github.io.git,master
+    coding: git@git.coding.net:marinzheng/marinzheng.git,master

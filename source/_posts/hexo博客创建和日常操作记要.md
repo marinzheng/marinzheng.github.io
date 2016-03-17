@@ -183,3 +183,32 @@ github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。
 1. 总体来说挺简单的；
 2. hexo在3.0之后改变这么大，那么在之后4.0、5.0、...、100.0的版本中，改变会不会更大，我是不是要在执行`npm install hexo-cli -g`命令下载hexo的时候指定它的版本号（`3.2.0 released`）？
 3. Now!
+
+----------
+
+补充：
+
+最近发现，github上发布的博客文章不会被百度收录，原因是github认为百度爬虫是流氓，给禁了。网上没有很好的解决方案。最好的方法是：将博客文章推送到多个地址（github和coding）。各种命令和日常操作都不变，只是改下配置就行了，这样最多快好省了。
+
+首先在[https://coding.net/](https://coding.net/ "coding官网")上创建帐户并新建一个项目xxx（项目名随意，不用像github一样非得命名成xxx.github.io，因为coding支持给项目定义域名）。创建帐户的时候最好和github用同样的邮箱，这样用一个ssh公钥就行了。
+
+然后配置coding的ssh访问：上传公钥并测试，不会操作就百度下。
+
+修改本地博客根目录下的`_config.yml`文件的`deploy`配置项：
+
+```
+    deploy:
+    	type: git
+    	git@github.com:xxx/xxx.github.io.git,master
+    	coding: git@git.coding.net:xxx/xxx.git,master
+```
+
+这样，在执行`hexo d`的时候，就会把本地博客同时发布到github和coding两个远程博客上了。
+
+最后，需要配置一下coding博客。在coding项目上，选择“演示”，里面有修改域名，可以自定义成自己喜欢的域名。最重要的是下面的“编译部署”项的“高级选项里”，要选“HTML”，其它默认这好了。点击“一键部署”，项目会启动起来。
+
+![coding演示](http://marinzheng.github.io/images/coding.png)
+
+到此，coding项目应该可以访问了，它会被百度收录，被搜索到了。
+
+
