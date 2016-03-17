@@ -76,7 +76,18 @@
 <li>hexo在3.0之后改变这么大，那么在之后4.0、5.0、…、100.0的版本中，改变会不会更大，我是不是要在执行<code>npm install hexo-cli -g</code>命令下载hexo的时候指定它的版本号（<code>3.2.0 released</code>）？</li>
 <li>Now!</li>
 </ol>
-</div><a data-url="http://marinzheng.github.io/2016/03/04/hexo博客创建和日常操作记要/" data-id="cilup80320000tgt49z0pi67k" class="article-share-link">分享到</a><div class="tags"><a href="/tags/hexo/">hexo</a></div><div class="post-nav"><a href="/2016/03/12/scala类中成员的访问修饰符/" class="pre">scala类中成员的访问修饰符</a></div><div id="disqus_thread"><script>var disqus_shortname = 'marinzheng';
+<hr>
+<p>补充：</p>
+<p>最近发现，github上发布的博客文章不会被百度收录，原因是github认为百度爬虫是流氓，给禁了。网上没有很好的解决方案。最好的方法是：将博客文章推送到多个地址（github和coding）。各种命令和日常操作都不变，只是改下配置就行了，这样最多快好省了。</p>
+<p>首先在<a href="https://coding.net/" title="coding官网" target="_blank" rel="external">https://coding.net/</a>上创建帐户并新建一个项目xxx（项目名随意，不用像github一样非得命名成xxx.github.io，因为coding支持给项目定义域名）。创建帐户的时候最好和github用同样的邮箱，这样用一个ssh公钥就行了。</p>
+<p>然后配置coding的ssh访问：上传公钥并测试，不会操作就百度下。</p>
+<p>修改本地博客根目录下的<code>_config.yml</code>文件的<code>deploy</code>配置项：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">	<span class="attribute">type</span>: git</span><br><span class="line">	git<span class="variable">@github</span>.<span class="attribute">com</span>:xxx/xxx.github.io.git,master</span><br><span class="line">	<span class="attribute">coding</span>: git<span class="variable">@git</span>.coding.<span class="attribute">net</span>:xxx/xxx.git,master</span><br></pre></td></tr></table></figure>
+<p>这样，在执行<code>hexo d</code>的时候，就会把本地博客同时发布到github和coding两个远程博客上了。</p>
+<p>最后，需要配置一下coding博客。在coding项目上，选择“演示”，里面有修改域名，可以自定义成自己喜欢的域名。最重要的是下面的“编译部署”项的“高级选项里”，要选“HTML”，其它默认这好了。点击“一键部署”，项目会启动起来。</p>
+<p><img src="http://marinzheng.github.io/images/coding.png" alt="coding演示"></p>
+<p>到此，coding项目应该可以访问了，它会被百度收录，被搜索到了。</p>
+</div><a data-url="http://marinzheng.github.io/2016/03/04/hexo博客创建和日常操作记要/" data-id="cilvrtlrm00003wt4sufmpike" class="article-share-link">分享到</a><div class="tags"><a href="/tags/hexo/">hexo</a></div><div class="post-nav"><a href="/2016/03/12/scala类中成员的访问修饰符/" class="pre">scala类中成员的访问修饰符</a></div><div id="disqus_thread"><script>var disqus_shortname = 'marinzheng';
 var disqus_identifier = '2016/03/04/hexo博客创建和日常操作记要/';
 var disqus_title = 'hexo博客创建和日常操作记要';
 var disqus_url = 'http://marinzheng.github.io/2016/03/04/hexo博客创建和日常操作记要/';
