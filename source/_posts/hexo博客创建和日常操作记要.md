@@ -38,13 +38,13 @@ github用户名是xxx，就创建一个xxx.github.io的项目。项目创建好�
 node有一套自己的包管理工具，叫npm（装node的时候已自动装好），只要把工具和包上传到npm服务器上，就可以用npm的命令下载到本地安装使用了，跟maven远程仓库差不多。hexo及其配套的一些工具都已上传到了npm服务器，按照hexo官方文档（[https://hexo.io/zh-cn/docs//](https://hexo.io/zh-cn/docs/ "hexo官方文档")）上的步骤，非常容易地就能创建一个本地博客：
 
 ```
-    $ cd e:                    #-- 命令行进入本地磁盘e盘
-    $ npm install hexo-cli -g  #-- 通过npm命令安装hexo
-    $ hexo init xxx.github.io  #-- 通过hexo命令生成本地博客项目
-    $ cd xxx.github.io         #-- 进入本地博客目录
-    $ npm install              #-- 通过npm命令安装项目依赖
-    $ hexo g                   #-- 通过hexo命令将本地博客项目源文件转化为博客文件（每回修改源文件，都得运行这个命令）
-    $ hexo s -p5000            #-- 通过hexo命令启动本地博客，用于测试
+    $ cd e:                    			 #-- 命令行进入本地磁盘e盘
+    $ npm install hexo-cli@1.0.1 -g  #-- 通过npm命令安装hexo-cli（怕换版本有问题，这里指定了当前最新版本1.0.1）
+    $ hexo init xxx.github.io        #-- 通过hexo命令生成本地博客项目
+    $ cd xxx.github.io               #-- 进入本地博客目录
+    $ npm install                    #-- 通过npm命令安装项目依赖
+    $ hexo g                         #-- 通过hexo命令将本地博客项目源文件转化为博客文件（每回修改源文件，都得运行这个命令）
+    $ hexo s -p5000                  #-- 通过hexo命令启动本地博客，用于测试
 ```
 
 此时，本地博客就创建好并启动起来了，可以通过`http://localhost:5000`访问了。按理说运行`hexo s`就行了，不用加端口号（`-p5000`），它就可以启动一个监听4000端口的web服务，但是我这儿不行。看了下我的hexo的版本是`3.2.0 released`，网上有人说hexo在`3.0`之后改动挺大，分出了很多模块，要单独安装（比如git模块，不装不能推送到github远程库，那既然这样，为什么不默认安装呢？），这种情况要装server模块才能解决。但是我发现，在生成本的博客的时候，默认已经安装了这个模块，我又重新安装了一回，还不行，好在现在这种运行方法也不麻烦，多加一个端口号就行了，所以先这样吧。
@@ -61,6 +61,8 @@ node有一套自己的包管理工具，叫npm（装node的时候已自动装好
     $ npm install hexo-renderer-jade --save                                        #-- 安装主题必要插件
     $ npm install hexo-renderer-sass --save                                        #-- 安装主题必要插件
 ```
+
+`--save`参数应该是起到把这个依赖保存在依赖的配置文件（博客根目录下的`package.json`文件）中的作用吧，所以只需运行一次，以后执行`npm install`就行了，不用单独下载这个依赖了，因为执行`npm install`命令就会自动下载`package.json`文件中配置的所有依赖。
 
 替换：修改`_config.yml`文件中的`theme: maupassant`。
 
@@ -93,7 +95,6 @@ node有一套自己的包管理工具，叫npm（装node的时候已自动装好
 	$ npm install hexo-deployer-git --save  #-- 通过npm命令安装hexo的git模块
 	$ hexo d                                #-- 通过hexo命令将本地博客内容推送到github远程博客
 ```
-`--save`参数应该是起到把这个依赖保存在依赖的配置文件（博客根目录下的`package.json`文件）中的作用吧，所以只需运行一次，以后执行`npm install`就行了，不用单独下载这个依赖了，因为执行`npm install`命令就会自动下载`package.json`文件中配置的所有依赖。
 
 `hexo d`命令如果执行不成功的话，应该是ssh的问题，需要在本地生成公钥，上传到github服务器中的ssh keys列表中，百度可解决，这里不赘述。
 
@@ -134,8 +135,8 @@ github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。
 用TortoiseGit或命令行下载仓库：`https://github.com/xxx/xxx.github.io.git`，并切换到`backup`分支。在刚生成的本地`xxx.github.io`目录下：
 
 ```
-  $ npm install hexo-cli@1.0.1 -g  #-- 安装hexo（一般只需运行一次，如果找不到hexo命令，就再执行一次）
-  $ npm install              #-- 安装package.json文件中配置的所有依赖（一般只需运行一次，如果缺包，就再执行一次）
+  $ npm install hexo-cli@1.0.1 -g  #-- 安装hexo（一般只需运行一次，如果因为卸载行等原因找不到hexo命令了，就再执行一次）
+  $ npm install                    #-- 安装package.json文件中配置的所有依赖（一般只需运行一次，有问题就再执行一次）
 ```
 
 本地博客根目录下的`package.json`文件的所有内容如下：
@@ -181,7 +182,7 @@ github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。
 总结：
 
 1. 总体来说挺简单的；
-2. hexo在3.0之后改变这么大，那么在之后4.0、5.0、...、100.0的版本中，改变会不会更大，我是不是要在执行`npm install hexo-cli -g`命令下载hexo-cli的时候指定它的版本号（`1.0.1`）？
+2. hexo在3.0之后改变这么大！那么在之后4.0、5.0、...、100.0的版本中，改变会不会更大？基于这个担心，在安装hexo-cli的时候指定了版本号（`1.0.1`），这种担心和做法对不对？
 3. Now!
 
 ----------
@@ -210,5 +211,3 @@ github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。
 ![coding演示](http://marinzheng.github.io/images/coding.png)
 
 到此，coding项目应该可以访问了，它会被百度收录，被搜索到了。
-
-
