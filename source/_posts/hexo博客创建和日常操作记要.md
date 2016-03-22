@@ -38,7 +38,7 @@ github用户名是xxx，就创建一个xxx.github.io的项目。项目创建好�
 node有一套自己的包管理工具，叫npm（装node的时候已自动装好），只要把工具和包上传到npm服务器上，就可以用npm的命令下载到本地安装使用了，跟maven远程仓库差不多。hexo及其配套的一些工具都已上传到了npm服务器，按照hexo官方文档（[https://hexo.io/zh-cn/docs//](https://hexo.io/zh-cn/docs/ "hexo官方文档")）上的步骤，非常容易地就能创建一个本地博客：
 
 ```
-    $ cd e:                    			 #-- 命令行进入本地磁盘e盘
+    $ cd e:                          #-- 命令行进入本地磁盘e盘
     $ npm install hexo-cli@1.0.1 -g  #-- 通过npm命令安装hexo-cli（怕换版本有问题，这里指定了当前最新版本1.0.1）
     $ hexo init xxx.github.io        #-- 通过hexo命令生成本地博客项目
     $ cd xxx.github.io               #-- 进入本地博客目录
@@ -169,7 +169,7 @@ github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。
 这样，就可以在新电脑上写博客了。日常操作如下：
 
 ```
-	$ hexo n '文章标题'  #-- 新建文章。文件建在xxx.github.io/source目录下，想编辑或修改，在这里找
+	$ hexo n '文章标题' #-- 新建文章。文件建在xxx.github.io/source目录下，想编辑或修改，在这里找
 	$ hexo g            #-- 将编辑的源文件转化成博客文件
 	$ hexo s -p5000     #-- 启动本地博客服务器，监听5000端口
 	$ hexo d            #-- 发布本地博客到github远程博客
