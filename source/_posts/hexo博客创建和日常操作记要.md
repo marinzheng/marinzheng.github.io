@@ -134,8 +134,8 @@ github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。
 用TortoiseGit或命令行下载仓库：`https://github.com/xxx/xxx.github.io.git`，并切换到`backup`分支。在刚生成的本地`xxx.github.io`目录下：
 
 ```
-  $ npm install hexo-cli -g  #-- 安装hexo（只需运行一次）
-  $ npm install              #-- 安装package.json文件中配置的所有依赖（只需运行一次）
+  $ npm install hexo-cli@1.0.1 -g  #-- 安装hexo（一般只需运行一次，如果找不到hexo命令，就再执行一次）
+  $ npm install              #-- 安装package.json文件中配置的所有依赖（一般只需运行一次，如果缺包，就再执行一次）
 ```
 
 本地博客根目录下的`package.json`文件的所有内容如下：
@@ -181,7 +181,7 @@ github上`xxx.github.io`库的`backup`分支之前已经建好，详见前文。
 总结：
 
 1. 总体来说挺简单的；
-2. hexo在3.0之后改变这么大，那么在之后4.0、5.0、...、100.0的版本中，改变会不会更大，我是不是要在执行`npm install hexo-cli -g`命令下载hexo的时候指定它的版本号（`3.2.0 released`）？
+2. hexo在3.0之后改变这么大，那么在之后4.0、5.0、...、100.0的版本中，改变会不会更大，我是不是要在执行`npm install hexo-cli -g`命令下载hexo-cli的时候指定它的版本号（`1.0.1`）？
 3. Now!
 
 ----------
