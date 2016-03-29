@@ -86,6 +86,7 @@ IntelliJ IDEA号称是最好用的Java IDE，这两年尝试了好几次，都�
 - 粘贴：`Ctrl + V`
 - 注释：`Ctrl + /`
 - 返回刚才编辑：`Alt + 左右键`
+- 修改代码提示快捷键：选`File->Settings->Keymap`点`Main menu->Code->Completion->`，删除`Cyclic Expand Word`，改`Basic`为`Alt + 斜杠`
 
 **代码模板：输完按`Tab`**
 
