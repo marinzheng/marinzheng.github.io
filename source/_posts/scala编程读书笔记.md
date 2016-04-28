@@ -248,3 +248,4 @@ c.SuitableFood 叫路径依赖类型。这与内部类挺像，但是scala中内
 •  高阶函数和优点是简练，缺点是有的时候不易读，转成for表达式就易读多了。scala将带yield的for表达式转译成有返回值的高阶函数，如map等，没yield的转译成没返回值的高阶函数，如foreach等。所以二者可以相互转换。
 •  之前讲的模式匹配中的构造器模式与样本类相关联，那不是样本类怎么办？不能用模式匹配了？可以用抽取器，类中定义unapply方法，返回可匹配的类型，如Option。调用模式匹配时，会调用这个方法把对象分解。
 •  _*表示列表剩余元素：`List(1, _*)`。
+•  有三种情况使用implicit: 一是转换成预期的数据类型，二是转换selection的receiver，三是隐含参数。转换成预期的数据类型比如你有一个方法参数类型是IndexedSeq[Char]，在你传入String时，编译器发现类型不匹配，就检查当前作用域是否有从String到IndexedSeq隐式转换。转换selection的receiver允许你适应某些方法调用，比如 “abc”.exist ，”abc”类型为String，本身没有定义exist方法，这时编辑器就检查当前作用域内String的隐式转换后的类型是否有exist方法，发现stringWrapper转换后成IndexedSeq类型后，可以有exist方法，这个和C# 静态扩展方法功能类似。隐含参数有点类似是缺省参数，如果在调用方法时没有提供某个参数，编译器会查找当前作用域是否有符合条件的implicit对象作为参数传入（有点类似dependency injection)。
